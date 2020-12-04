@@ -1,6 +1,6 @@
 from mip import Model, xsum, BINARY, INTEGER
 
-def resolver_problema(n,L,m,w,b,):
+def resolver_problema_cortes(n,L,m,w,b,):
     # creating the model
     model = Model()
     x = {(k, i, j): model.add_var(obj=0, var_type=INTEGER, name="x[%d,%d,%d]" % (k, i, j))
@@ -8,6 +8,8 @@ def resolver_problema(n,L,m,w,b,):
 
     y = {(k, j): model.add_var(obj=1, var_type=BINARY, name="y[%d,%d]" % (k, j))
          for k in range(len(n)) for j in range(n[k])}
+
+
 
     # constraints
     for i in range(m):

@@ -7,3 +7,11 @@ def comprobacion_enteros(arg):
     except:
         return False
 
+
+def comprobacion_float(arg):
+    try:
+        float(arg)
+        return True
+    except:
+        return False
+

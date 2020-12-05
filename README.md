@@ -6,4 +6,5 @@ Básicamente con las librerías Tkinter, mip y pyinstaller de python se ha const
   
 Es un primer acercamiento y evidentemente muy mejorable.
 
+## Instalación
 Para probar la aplicación de escritorio, basta con descargarse el fichero **dist**. Dentro de este ejecutar el archivo **main.exe**

@@ -1,4 +1,4 @@
-from mip import Model, xsum, BINARY, INTEGER
+from mip import Model, xsum, BINARY, INTEGER, minimize
 
 def resolver_problema_cortes(n,L,m,w,b,):
     # creating the model
@@ -6,10 +6,14 @@ def resolver_problema_cortes(n,L,m,w,b,):
     x = {(k, i, j): model.add_var(obj=0, var_type=INTEGER, name="x[%d,%d,%d]" % (k, i, j))
           for i in range(m) for k in range(len(n)) for j in range(n[k])}
 
-    y = {(k, j): model.add_var(obj=1, var_type=BINARY, name="y[%d,%d]" % (k, j))
+    y = {(k, j): model.add_var(obj=0, var_type=BINARY, name="y[%d,%d]" % (k, j))
          for k in range(len(n)) for j in range(n[k])}
 
+    model.objective = minimize(
+        xsum( xsum(L[k] *y[k, j] for k in range(len(n)) for j in range(n[k])) for k in range(len(n)))
 
+    )
+    #le hemos puesto que ademas priorice coger las menores longitudes--> menor desperdicio!!
 
     # constraints
     for i in range(m):
